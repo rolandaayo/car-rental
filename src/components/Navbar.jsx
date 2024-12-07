@@ -5,7 +5,7 @@ export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false)
 
   return (
-    <div className="flex justify-between items-center px-8 py-6 bg-gray-800 text-white">
+    <div className="flex justify-between items-center px-8 py-6 bg-gray-800 text-white fixed top-0 left-0 right-0 z-50">
       <div className="text-2xl font-bold">RideX</div>
       
       {/* Hamburger button for mobile */}
