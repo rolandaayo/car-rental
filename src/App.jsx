@@ -2,9 +2,10 @@
 import React from 'react'
 import Navbar from './components/Navbar'
 import Header from './components/Header'
-import Hero2 from './components/Hero2'
 import Footer from './components/Footer'
 import Featured from './components/Featured'
+import Getstarted from './components/Getstarted'
+import Blog from './components/Blog'
 
 export default function App() {
   return (
@@ -12,7 +13,8 @@ export default function App() {
       <Navbar/>
       <Header/>
       <Featured/>
-      <Hero2/>
+      <Getstarted/>
+      <Blog/>
       <Footer/>
     </div>
   )
