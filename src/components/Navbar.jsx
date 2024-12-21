@@ -1,8 +1,15 @@
 /* eslint-disable no-unused-vars */
 import React, { useState } from 'react'
+import { getCurrentUser, logout } from '../utils/authUtils'
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false)
+  const user = getCurrentUser()
+
+  const handleLogout = () => {
+    logout()
+    window.location.href = '/login'
+  }
 
   return (
     <div className="flex justify-between items-center px-8 py-6 bg-gray-800 text-white fixed top-0 left-0 right-0 z-50">
@@ -24,10 +31,24 @@ export default function Navbar() {
         <a href="/rides" className="hover:text-gray-300">Explore Cars</a>
         <a href="/offer" className="hover:text-gray-300">About Us</a>
         <a href="/profile" className="hover:text-gray-300">Blog</a>
-        <a href="/login" className="bg-blue-500 px-4 py-2 rounded-lg hover:bg-blue-600">Explore Cars</a>
-        <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 inline-block" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
-        </svg>
+        {user ? (
+          <>
+            <a href="/bookings" className="hover:text-gray-300">My Bookings</a>
+            <div className="flex items-center space-x-4">
+              <span className="text-sm">{user.name}</span>
+              <button
+                onClick={handleLogout}
+                className="bg-red-500 px-4 py-2 rounded-lg hover:bg-red-600"
+              >
+                Logout
+              </button>
+            </div>
+          </>
+        ) : (
+          <a href="/login" className="bg-blue-500 px-4 py-2 rounded-lg hover:bg-blue-600">
+            Login
+          </a>
+        )}
       </nav>
     </div>
   )
